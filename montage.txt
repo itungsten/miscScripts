@@ -1,0 +1,1 @@
+montage flag*.png -tile X1 -geometry +0+0 flag.png

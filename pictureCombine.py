@@ -1,21 +1,24 @@
 from PIL import Image
-width=124
-height=70
-nums=9
-prefix='IMG0000'
+width=240
+height=240
+nums=576
+prefix='IMG'
 suffix='.bmp'
 # the path is prefix+str(i)+suffix
 
-res=Image.new('RGB', (width, height), (255, 255, 255))
-#创建白色画布    
+white=(255,255,255)
+black=(0,0,0)
+
+res=Image.new('RGB', (width, height), black)
+# fill with black color
 
 for i in range(nums):
-	path=prefix+str(i)+suffix
+	path=prefix+(str(i)).rjust(5,'0')+suffix
+	# print(path)
 	pic=Image.open(path).convert('RGB')
 	for j in range(width):
 		for k in range(height):
 			pixel=pic.getpixel((j,k))
 			resPixel=res.getpixel((j,k))
-			res.putpixel((j,k),min(resPixel,pixel))
-			#黑色最小
+			res.putpixel((j,k),max(resPixel,pixel))
 res.save('ans'+suffix)
