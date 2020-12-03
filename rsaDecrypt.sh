@@ -1,0 +1,1 @@
+openssl rsautl -decrypt -in decoded.txt -inkey psa.key -out origin.txt
